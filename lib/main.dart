@@ -8,8 +8,13 @@ class App extends StatelessWidget {
     // TODO: implement build
     return Center(
       child: Text(
-        'hello custom widget!',
+        'hello',
         textDirection: TextDirection.ltr,
+        style: TextStyle(
+          fontSize: 40,
+          fontWeight: FontWeight.bold,
+          color: Colors.yellow,
+        ),
       ),
     );
   }
