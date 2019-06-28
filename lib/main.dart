@@ -21,6 +21,12 @@ class App extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
+  int _currentIndex = 0;
+
+  void _onTapHandler(int index) {
+    setState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -83,6 +89,8 @@ class Home extends StatelessWidget {
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           fixedColor: Colors.black,
+          currentIndex: _currentIndex,
+          onTap: _onTapHandler,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.explore),
