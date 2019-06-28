@@ -78,6 +78,14 @@ class Home extends StatelessWidget {
             ),
           ],
         ),
+        drawer: Container(
+          color: Colors.white,
+          padding: EdgeInsets.all(8),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[Text('this is a drawer')],
+          ),
+        ),
       ),
     );
   }
