@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './demo/Hello.dart';
 import './demo/ListViewDemo.dart';
 import './demo/DrawerDemo.dart';
+import './demo/BottomNavigationBarDemo.dart';
 
 void main() => runApp(App());
 
@@ -12,7 +13,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Home(),
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.yellow,
         highlightColor: Color.fromRGBO(255, 255, 255, 0.5), //
         splashColor: Colors.white54,
       ),
@@ -21,12 +22,6 @@ class App extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
-  int _currentIndex = 0;
-
-  void _onTapHandler(int index) {
-    setState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -68,11 +63,12 @@ class Home extends StatelessWidget {
         ),
         body: TabBarView(
           children: <Widget>[
-            Icon(
-              Icons.security,
-              size: 128,
-              color: Colors.black12,
-            ),
+            ListViewDemo(),
+            // Icon(
+            //   Icons.security,
+            //   size: 128,
+            //   color: Colors.black12,
+            // ),
             Icon(
               Icons.send,
               size: 128,
@@ -86,30 +82,7 @@ class Home extends StatelessWidget {
           ],
         ),
         drawer: DrawerDemo(),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          fixedColor: Colors.black,
-          currentIndex: _currentIndex,
-          onTap: _onTapHandler,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.explore),
-              title: Text('Explore'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.history),
-              title: Text('History'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.list),
-              title: Text('List'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              title: Text('My'),
-            ),
-          ],
-        ),
+        bottomNavigationBar: BottomNavigationBarDemo(),
       ),
     );
   }
