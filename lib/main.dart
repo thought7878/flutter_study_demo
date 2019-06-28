@@ -82,9 +82,16 @@ class Home extends StatelessWidget {
             child: ListView(
               padding: EdgeInsets.zero,
               children: <Widget>[
-                DrawerHeader(
-                  child: Text('drawer header'.toUpperCase()),
-                  decoration: BoxDecoration(color: Colors.grey[100]),
+                UserAccountsDrawerHeader(
+                  accountName: Text(
+                    'andy',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  accountEmail: Text('andy@gmail.com'),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        'https://avatars3.githubusercontent.com/u/5996844?s=460&v=4'),
+                  ),
                 ),
                 ListTile(
                   title: Text(
