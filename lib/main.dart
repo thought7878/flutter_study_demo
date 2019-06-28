@@ -20,25 +20,59 @@ class App extends StatelessWidget {
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          tooltip: 'navigation',
-          onPressed: () => debugPrint('navigation button pressed'),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        backgroundColor: Colors.grey[100],
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.menu),
+            tooltip: 'navigation',
+            onPressed: () => debugPrint('navigation button pressed'),
+          ),
+          title: Text('hello flutter'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              tooltip: 'search',
+              onPressed: () => debugPrint('search button is pressed'),
+            )
+          ],
+          elevation: 0,
+          bottom: TabBar(
+            tabs: <Widget>[
+              Tab(
+                icon: Icon(Icons.security),
+              ),
+              Tab(
+                icon: Icon(Icons.send),
+              ),
+              Tab(
+                icon: Icon(Icons.settings),
+              )
+            ],
+          ),
         ),
-        title: Text('hello flutter'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            tooltip: 'search',
-            onPressed: () => debugPrint('search button is pressed'),
-          )
-        ],
-        elevation: 0,
+        body: TabBarView(
+          children: <Widget>[
+            Icon(
+              Icons.security,
+              size: 128,
+              color: Colors.black12,
+            ),
+            Icon(
+              Icons.send,
+              size: 128,
+              color: Colors.black12,
+            ),
+            Icon(
+              Icons.settings,
+              size: 128,
+              color: Colors.black12,
+            ),
+          ],
+        ),
       ),
-      body: ListViewDemo(),
     );
   }
 }
