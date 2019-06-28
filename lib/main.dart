@@ -23,7 +23,19 @@ class Home extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          tooltip: 'navigation',
+          onPressed: () => debugPrint('navigation button pressed'),
+        ),
         title: Text('hello flutter'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            tooltip: 'search',
+            onPressed: () => debugPrint('search button is pressed'),
+          )
+        ],
         elevation: 0,
       ),
       body: ListViewDemo(),
