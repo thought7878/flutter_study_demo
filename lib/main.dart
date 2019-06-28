@@ -40,6 +40,10 @@ class Home extends StatelessWidget {
           ],
           elevation: 0,
           bottom: TabBar(
+            unselectedLabelColor: Colors.black38,
+            indicatorColor: Colors.black54,
+            indicatorSize: TabBarIndicatorSize.label,
+            indicatorWeight: 1,
             tabs: <Widget>[
               Tab(
                 icon: Icon(Icons.security),
