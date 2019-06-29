@@ -25,34 +25,48 @@ class BasicDemo extends StatelessWidget {
             width: 90,
             height: 90,
             decoration: BoxDecoration(
-              color: Color.fromRGBO(3, 54, 255, 1.0),
-              border: Border.all(
-                color: Colors.indigoAccent[100],
-                width: 3,
-                style: BorderStyle.solid,
-              ),
-              // borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(6.0, 7.0),
-                  color: Color.fromRGBO(16, 20, 188, 1.0),
-                  blurRadius: 10.0,
+                color: Color.fromRGBO(3, 54, 255, 1.0),
+                border: Border.all(
+                  color: Colors.indigoAccent[100],
+                  width: 3,
+                  style: BorderStyle.solid,
                 ),
-              ],
-              shape: BoxShape.circle,
-              // border: Border(
-              //   top: BorderSide(
-              //     color: Colors.green,
-              //     width: 6,
-              //     style: BorderStyle.solid,
-              //   ),
-              //   bottom: BorderSide(
-              //     color: Colors.orange,
-              //     width: 6,
-              //     style: BorderStyle.solid,
-              //   ),
-              // ),
-            ),
+                // borderRadius: BorderRadius.circular(16),
+                // boxShadow: [
+                //   BoxShadow(
+                //     offset: Offset(6.0, 7.0),
+                //     color: Color.fromRGBO(16, 20, 188, 1.0),
+                //     blurRadius: 10.0,
+                //   ),
+                // ],
+                shape: BoxShape.circle,
+                // 径向渐变
+                // gradient: RadialGradient(colors: [
+                //   Color.fromRGBO(7, 102, 255, 1.0),
+                //   Color.fromRGBO(3, 28, 128, 1.0),
+                // ])
+                // 线性渐变
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromRGBO(7, 102, 255, 1.0),
+                    Color.fromRGBO(3, 28, 128, 1.0),
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                )
+                // border: Border(
+                //   top: BorderSide(
+                //     color: Colors.green,
+                //     width: 6,
+                //     style: BorderStyle.solid,
+                //   ),
+                //   bottom: BorderSide(
+                //     color: Colors.orange,
+                //     width: 6,
+                //     style: BorderStyle.solid,
+                //   ),
+                // ),
+                ),
           )
         ],
       ),
