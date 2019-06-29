@@ -11,6 +11,7 @@ class BasicDemo extends StatelessWidget {
     return Container(
       color: Colors.grey[100],
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
             child: Icon(
@@ -18,11 +19,14 @@ class BasicDemo extends StatelessWidget {
               color: Colors.white,
               size: 32,
             ),
-            color: Color.fromRGBO(3, 54, 255, 1.0),
+            // color: Color.fromRGBO(3, 54, 255, 1.0),
             padding: EdgeInsets.all(16),
             margin: EdgeInsets.all(8),
             width: 90,
             height: 90,
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(3, 54, 255, 1.0),
+            ),
           )
         ],
       ),
