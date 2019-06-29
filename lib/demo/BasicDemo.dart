@@ -9,7 +9,16 @@ class BasicDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[100],
+      // color: Colors.grey[100],
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage(
+              'https://resources.ninghao.org/images/say-hello-to-barry.jpg'),
+          alignment: Alignment.topCenter,
+          // repeat: ImageRepeat.repeatY,
+          fit: BoxFit.cover,
+        ),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
