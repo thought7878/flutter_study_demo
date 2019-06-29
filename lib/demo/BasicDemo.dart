@@ -8,6 +8,36 @@ class BasicDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Container(
+      color: Colors.grey[100],
+      child: Row(
+        children: <Widget>[
+          Container(
+            child: Icon(
+              Icons.pool,
+              color: Colors.white,
+              size: 32,
+            ),
+            color: Color.fromRGBO(3, 54, 255, 1.0),
+            padding: EdgeInsets.all(16),
+            margin: EdgeInsets.all(8),
+            width: 90,
+            height: 90,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class RichTextDemo extends StatelessWidget {
+  final TextStyle _textStyle = TextStyle(fontSize: 16, color: Colors.green);
+
+  final String title = '将进酒';
+  final String author = '李白';
+
+  @override
+  Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
         text: 'github',
