@@ -1,9 +1,57 @@
 import 'package:flutter/material.dart';
+import '../model/post.dart';
 
 class ViewDemo extends StatelessWidget {
+  Widget _pageViewItemBuilder(BuildContext context, index) {
+    return Stack(
+      children: <Widget>[
+        SizedBox.expand(
+          child: Image.network(
+            posts[index].imageUrl,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Positioned(
+          left: 8.0,
+          bottom: 8.0,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                posts[index].title,
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              Text(
+                posts[index].author,
+                style: TextStyle(
+                  fontSize: 16.0,
+                  // fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    return PageView.builder(
+      itemCount: posts.length,
+      itemBuilder: _pageViewItemBuilder,
+    );
+  }
+}
+
+class PageViewDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return PageView(
       // pageSnapping: false,
       // reverse: true,
