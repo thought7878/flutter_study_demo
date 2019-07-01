@@ -4,11 +4,15 @@ class LayoutDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           IconBadge(Icons.pool),
-          IconBadge(Icons.portable_wifi_off),
+          IconBadge(
+            Icons.portable_wifi_off,
+            size: 64.0,
+          ),
           IconBadge(Icons.radio),
         ],
       ),
