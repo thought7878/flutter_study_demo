@@ -3,6 +3,26 @@ import 'package:flutter/material.dart';
 class LayoutDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          AspectRatio(
+            aspectRatio: 16.0 / 9.0,
+            child: Container(
+              color: Color.fromRGBO(3, 54, 255, 1.0),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class StackDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
