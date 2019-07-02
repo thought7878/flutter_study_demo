@@ -8,9 +8,24 @@ class SliverDemo extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            title: Text('Hello'),
+            // title: Text('Hello'),
             // pinned: true,
+            // backgroundColor: Colors.white,
             floating: true,
+            expandedHeight: 178.0,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(
+                '你好，Flutter',
+                style: TextStyle(
+                  fontSize: 24.0,
+                  color: Colors.white,
+                ),
+              ),
+              background: Image.network(
+                posts[6].imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           SliverSafeArea(
             sliver: SliverPadding(
