@@ -2,6 +2,41 @@ import 'package:flutter/material.dart';
 import '../model/post.dart';
 
 class ViewDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return GridViewExtentDemo();
+  }
+}
+
+class GridViewExtentDemo extends StatelessWidget {
+  List<Widget> _itemBuilder(int length) {
+    return List.generate(length, (int index) {
+      return Container(
+        color: Colors.grey[300],
+        alignment: Alignment.center,
+        child: Text(
+          'item $index',
+          style: TextStyle(fontSize: 18.0, color: Colors.grey),
+        ),
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.extent(
+      maxCrossAxisExtent: 150.0,
+      // crossAxisCount: 3,
+      // scrollDirection: Axis.horizontal,
+      crossAxisSpacing: 16.0,
+      mainAxisSpacing: 16.0,
+      children: _itemBuilder(100),
+    );
+  }
+}
+
+class GridViewCountDemo extends StatelessWidget {
   List<Widget> _itemBuilder(int length) {
     return List.generate(length, (int index) {
       return Container(
