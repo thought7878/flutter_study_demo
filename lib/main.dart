@@ -17,6 +17,11 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: NavigatorDemo(),
+      routes: {
+        '/about': (context) => Page(
+              title: 'About2',
+            )
+      },
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         highlightColor: Color.fromRGBO(255, 255, 255, 0.5), //
