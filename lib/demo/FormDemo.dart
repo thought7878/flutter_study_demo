@@ -16,10 +16,52 @@ class FormDemo extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              TextFieldDemo(),
+              RegisterForm(),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class RegisterForm extends StatefulWidget {
+  RegisterForm({Key key}) : super(key: key);
+
+  _RegisterFormState createState() => _RegisterFormState();
+}
+
+class _RegisterFormState extends State<RegisterForm> {
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      child: Column(
+        children: <Widget>[
+          TextFormField(
+            decoration: InputDecoration(labelText: 'Username'),
+          ),
+          TextFormField(
+            obscureText: true,
+            decoration: InputDecoration(labelText: 'Password'),
+          ),
+          SizedBox(
+            height: 32.0,
+          ),
+          Container(
+            width: double.infinity,
+            child: RaisedButton(
+              color: Theme.of(context).accentColor,
+              elevation: 0.0,
+              child: Text(
+                'submit',
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: () {
+                print('pressed');
+              },
+            ),
+          )
+        ],
       ),
     );
   }
@@ -32,7 +74,6 @@ class TextFieldDemo extends StatefulWidget {
 
 class _TextFieldDemoState extends State<TextFieldDemo> {
   final textEditingController = TextEditingController();
-
   // 销毁controller
   @override
   void dispose() {
