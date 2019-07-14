@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_demo/demo/FormDemo.dart';
 import './demo/Hello.dart';
 import './demo/ListViewDemo.dart';
 import './demo/DrawerDemo.dart';
@@ -17,12 +18,11 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: NavigatorDemo(),
-      initialRoute: '/',
+      initialRoute: '/form',
       routes: {
         '/': (context) => Home(),
-        '/about': (context) => Page(
-              title: 'About2',
-            )
+        '/about': (context) => Page(title: 'About2'),
+        '/form': (context) => FormDemo()
       },
       theme: ThemeData(
         primarySwatch: Colors.yellow,
