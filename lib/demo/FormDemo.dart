@@ -34,6 +34,12 @@ class _TextFieldDemoState extends State<TextFieldDemo> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: (value) {
+        print('onChanged:$value');
+      },
+      onSubmitted: (value) {
+        print('onSubmitted:$value');
+      },
       decoration: InputDecoration(
         icon: Icon(Icons.desktop_mac),
         labelText: 'title',
