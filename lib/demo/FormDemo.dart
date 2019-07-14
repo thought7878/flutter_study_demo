@@ -31,12 +31,32 @@ class TextFieldDemo extends StatefulWidget {
 }
 
 class _TextFieldDemoState extends State<TextFieldDemo> {
+  final textEditingController = TextEditingController();
+
+  // 销毁controller
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
+  // 初始状态/数据
+  @override
+  void initState() {
+    super.initState();
+    // textEditingController.text = 'hello flutter';
+    textEditingController.addListener(() {
+      print('TextEditingController:${textEditingController.text}');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: (value) {
-        print('onChanged:$value');
-      },
+      controller: textEditingController,
+      // onChanged: (value) {
+      //   print('onChanged:$value');
+      // },
       onSubmitted: (value) {
         print('onSubmitted:$value');
       },
