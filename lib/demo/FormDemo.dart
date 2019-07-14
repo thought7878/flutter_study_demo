@@ -37,8 +37,23 @@ class _RegisterFormState extends State<RegisterForm> {
 
   void submit() {
     registerFormKey.currentState.save();
+    registerFormKey.currentState.validate();
     debugPrint('username:$username');
     debugPrint('password:$password');
+  }
+
+  String validateUsername(String value) {
+    if (value.isEmpty) {
+      return 'Username is required';
+    }
+    return null;
+  }
+
+  String validatePassword(String value) {
+    if (value.isEmpty) {
+      return 'Password is required';
+    }
+    return null;
   }
 
   @override
@@ -48,17 +63,19 @@ class _RegisterFormState extends State<RegisterForm> {
       child: Column(
         children: <Widget>[
           TextFormField(
-            decoration: InputDecoration(labelText: 'Username'),
+            decoration: InputDecoration(labelText: 'Username', helperText: ''),
             onSaved: (value) {
               username = value;
             },
+            validator: validateUsername,
           ),
           TextFormField(
             obscureText: true,
-            decoration: InputDecoration(labelText: 'Password'),
+            decoration: InputDecoration(labelText: 'Password', helperText: ''),
             onSaved: (value) {
               password = value;
             },
+            validator: validatePassword,
           ),
           SizedBox(
             height: 32.0,
