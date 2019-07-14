@@ -33,7 +33,17 @@ class TextFieldDemo extends StatefulWidget {
 class _TextFieldDemoState extends State<TextFieldDemo> {
   @override
   Widget build(BuildContext context) {
-    return TextField();
+    return TextField(
+      decoration: InputDecoration(
+        icon: Icon(Icons.desktop_mac),
+        labelText: 'title',
+        hintText: 'please input title',
+        // border: InputBorder.none,
+        // border: OutlineInputBorder(),
+        filled: true,
+        // fillColor: Colors.yellow,
+      ),
+    );
   }
 }
 
