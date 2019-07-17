@@ -41,6 +41,9 @@ class _RegisterFormState extends State<RegisterForm> {
       registerFormKey.currentState.save();
       debugPrint('username:$username');
       debugPrint('password:$password');
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text('正在注册...'),
+      ));
     } else {
       setState(() {
         autoValidate = true;
