@@ -11,6 +11,10 @@ class ButtonDemo extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListItem(
+            title: 'CommonButtonDemo',
+            page: CommonButtonDemo(),
+          ),
+          ListItem(
             title: 'FloatingActionButtonDemo',
             page: FloatingActionButtonDemo(),
           ),
@@ -34,6 +38,98 @@ class ListItem extends StatelessWidget {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => page));
       },
+    );
+  }
+}
+
+class CommonButtonDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Widget flatButtonDemo = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        FlatButton(
+          child: Text(
+            'FlatButton',
+            // style: TextStyle(color: Theme.of(context).accentColor),
+          ),
+          splashColor: Colors.grey,
+          textColor: Theme.of(context).accentColor,
+          onPressed: () {},
+        ),
+        FlatButton.icon(
+          label: Text('IconFlatButton'),
+          icon: Icon(Icons.add),
+          splashColor: Colors.grey,
+          onPressed: () {},
+        )
+      ],
+    );
+    Widget raisedButtonDemo = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        RaisedButton(
+          child: Text(
+            'RaisedButton',
+            // style: TextStyle(color: Theme.of(context).accentColor),
+          ),
+          splashColor: Colors.grey,
+          elevation: 0.0,
+          textColor: Theme.of(context).accentColor,
+          onPressed: () {},
+        ),
+        SizedBox(
+          width: 16.0,
+        ),
+        RaisedButton.icon(
+          label: Text('IconRaisedButton'),
+          icon: Icon(Icons.add),
+          elevation: 16.0,
+          splashColor: Colors.grey,
+          onPressed: () {},
+        )
+      ],
+    );
+    //
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('CommonButtonDemo'),
+        elevation: 0.0,
+      ),
+      body: Container(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            flatButtonDemo,
+            raisedButtonDemo,
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _WidgetDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('CommonButtonDemo'),
+        elevation: 0.0,
+      ),
+      body: Container(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[],
+            )
+          ],
+        ),
+      ),
     );
   }
 }
