@@ -45,6 +45,7 @@ class ListItem extends StatelessWidget {
 class CommonButtonDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //
     Widget flatButtonDemo = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -54,7 +55,9 @@ class CommonButtonDemo extends StatelessWidget {
             // style: TextStyle(color: Theme.of(context).accentColor),
           ),
           splashColor: Colors.grey,
+          // color: Theme.of(context).accentColor,
           textColor: Theme.of(context).accentColor,
+          // elevation: 10.0,
           onPressed: () {},
         ),
         FlatButton.icon(
@@ -65,6 +68,7 @@ class CommonButtonDemo extends StatelessWidget {
         )
       ],
     );
+    //
     Widget raisedButtonDemo = Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -73,9 +77,13 @@ class CommonButtonDemo extends StatelessWidget {
             'RaisedButton',
             // style: TextStyle(color: Theme.of(context).accentColor),
           ),
-          splashColor: Colors.grey,
+          shape: StadiumBorder(),
+          // BeveledRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+          // splashColor: Colors.grey,
           elevation: 0.0,
-          textColor: Theme.of(context).accentColor,
+          // textColor: Colors.black,
+          // textTheme: ButtonTextTheme.primary,
+          // color: Theme.of(context).accentColor,
           onPressed: () {},
         ),
         SizedBox(
@@ -85,8 +93,47 @@ class CommonButtonDemo extends StatelessWidget {
           label: Text('IconRaisedButton'),
           icon: Icon(Icons.add),
           elevation: 16.0,
+          textColor: Colors.black,
           splashColor: Colors.grey,
+          color: Theme.of(context).accentColor,
           onPressed: () {},
+        )
+      ],
+    );
+    Widget raisedButtonDemo2 = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        RaisedButton(
+          child: Text(
+            'RaisedButton',
+            // style: TextStyle(color: Theme.of(context).accentColor),
+          ),
+          // splashColor: Colors.grey,
+          elevation: 0.0,
+          // textColor: Colors.white,
+          // textTheme: ButtonTextTheme.primary,
+          // color: Theme.of(context).accentColor,
+          onPressed: () {},
+        ),
+        SizedBox(
+          width: 16.0,
+        ),
+        Theme(
+          data: Theme.of(context).copyWith(
+            buttonTheme: ButtonThemeData(
+              buttonColor: Theme.of(context).accentColor,
+              splashColor: Colors.grey,
+              textTheme: ButtonTextTheme.normal,
+            ),
+          ),
+          child: RaisedButton.icon(
+            label: Text('IconRaisedButton'),
+            icon: Icon(Icons.add),
+            elevation: 16.0,
+            // textColor: Colors.black,
+            // splashColor: Colors.grey,
+            onPressed: () {},
+          ),
         )
       ],
     );
@@ -102,7 +149,21 @@ class CommonButtonDemo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             flatButtonDemo,
+            Row(
+              children: <Widget>[
+                Text('设置button内部样式，覆盖ThemeData样式：'),
+              ],
+            ),
             raisedButtonDemo,
+            SizedBox(
+              height: 16.0,
+            ),
+            Row(
+              children: <Widget>[
+                Text('设置局部Theme样式，覆盖ThemeData样式：'),
+              ],
+            ),
+            raisedButtonDemo2
           ],
         ),
       ),
