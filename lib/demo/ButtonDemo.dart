@@ -110,6 +110,7 @@ class CommonButtonDemo extends StatelessWidget {
           ),
           // splashColor: Colors.grey,
           elevation: 0.0,
+          // shape: StadiumBorder(),
           // textColor: Colors.white,
           // textTheme: ButtonTextTheme.primary,
           // color: Theme.of(context).accentColor,
@@ -130,6 +131,44 @@ class CommonButtonDemo extends StatelessWidget {
             label: Text('IconRaisedButton'),
             icon: Icon(Icons.add),
             elevation: 16.0,
+            // textColor: Colors.black,
+            // splashColor: Colors.grey,
+            onPressed: () {},
+          ),
+        )
+      ],
+    );
+    Widget outlineButtonDemo = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        OutlineButton(
+          child: Text(
+            'OutlineButton',
+            // style: TextStyle(color: Theme.of(context).accentColor),
+          ),
+          splashColor: Colors.grey[100],
+          textColor: Colors.black,
+          borderSide: BorderSide(color: Colors.black),
+          highlightedBorderColor: Colors.grey,
+          shape: StadiumBorder(),
+          // textTheme: ButtonTextTheme.primary,
+          // color: Theme.of(context).accentColor,
+          onPressed: () {},
+        ),
+        SizedBox(
+          width: 16.0,
+        ),
+        Theme(
+          data: Theme.of(context).copyWith(
+            buttonTheme: ButtonThemeData(
+              buttonColor: Theme.of(context).accentColor,
+              splashColor: Colors.grey,
+              textTheme: ButtonTextTheme.normal,
+            ),
+          ),
+          child: OutlineButton.icon(
+            label: Text('IconOutlineButton'),
+            icon: Icon(Icons.add),
             // textColor: Colors.black,
             // splashColor: Colors.grey,
             onPressed: () {},
@@ -163,7 +202,16 @@ class CommonButtonDemo extends StatelessWidget {
                 Text('设置局部Theme样式，覆盖ThemeData样式：'),
               ],
             ),
-            raisedButtonDemo2
+            raisedButtonDemo2,
+            SizedBox(
+              height: 16.0,
+            ),
+            Row(
+              children: <Widget>[
+                Text('设置OutlineButton样式：'),
+              ],
+            ),
+            outlineButtonDemo,
           ],
         ),
       ),
