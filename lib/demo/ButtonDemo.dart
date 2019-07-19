@@ -176,6 +176,70 @@ class CommonButtonDemo extends StatelessWidget {
         )
       ],
     );
+    Widget fixedWidthButtonDemo = Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          width: 180,
+          child: OutlineButton(
+            child: Text(
+              'OutlineButton',
+              // style: TextStyle(color: Theme.of(context).accentColor),
+            ),
+            splashColor: Colors.grey[100],
+            textColor: Colors.black,
+            borderSide: BorderSide(color: Colors.black),
+            highlightedBorderColor: Colors.grey,
+            shape: StadiumBorder(),
+            // textTheme: ButtonTextTheme.primary,
+            // color: Theme.of(context).accentColor,
+            onPressed: () {},
+          ),
+        )
+      ],
+    );
+    Widget expandedButtonDemo = Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+              child: RaisedButton(
+                child: Text(
+                  'OutlineButton',
+                ),
+                onPressed: () {},
+              ),
+            )
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+              // flex: 1,
+              child: RaisedButton(
+                child: Text(
+                  '1',
+                ),
+                onPressed: () {},
+              ),
+            ),
+            SizedBox(
+              width: 16.0,
+            ),
+            Expanded(
+              flex: 2,
+              child: RaisedButton(
+                child: Text('2'),
+                onPressed: () {},
+              ),
+            )
+          ],
+        )
+      ],
+    );
+
     //
     return Scaffold(
       appBar: AppBar(
@@ -212,6 +276,20 @@ class CommonButtonDemo extends StatelessWidget {
               ],
             ),
             outlineButtonDemo,
+            SizedBox(
+              height: 16.0,
+            ),
+            Row(
+              children: <Widget>[Text('有固定宽度的button：')],
+            ),
+            fixedWidthButtonDemo,
+            SizedBox(
+              height: 16.0,
+            ),
+            Row(
+              children: <Widget>[Text('占满可用宽度的button：')],
+            ),
+            expandedButtonDemo,
           ],
         ),
       ),
