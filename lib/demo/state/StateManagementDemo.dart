@@ -12,19 +12,23 @@ class _StateManagementDemoState extends State<StateManagementDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('StateManagementDemo'),
-      ),
-      body: CounterWrapper(count, increaseCount),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: increaseCount,
+    return CounterProvider(
+      count: count,
+      increaseCount: _increaseCount,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('StateManagementDemo'),
+        ),
+        body: CounterWrapper(),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: _increaseCount,
+        ),
       ),
     );
   }
 
-  void increaseCount() {
+  void _increaseCount() {
     setState(() {
       count += 1;
     });
@@ -32,30 +36,40 @@ class _StateManagementDemoState extends State<StateManagementDemo> {
   }
 }
 
-class CounterWrapper extends StatelessWidget {
+class CounterProvider extends InheritedWidget {
   final int count;
   final VoidCallback increaseCount;
+  final Widget child;
 
-  const CounterWrapper(this.count, this.increaseCount);
+  CounterProvider({this.count, this.increaseCount, this.child})
+      : super(child: child);
 
+  static CounterProvider of(BuildContext context) =>
+      context.inheritFromWidgetOfExactType(CounterProvider);
+
+  @override
+  bool updateShouldNotify(InheritedWidget oldWidget) {
+    return true;
+  }
+}
+
+class CounterWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Counter(count, increaseCount),
+        child: Counter(),
       ),
     );
   }
 }
 
 class Counter extends StatelessWidget {
-  final int count;
-  final VoidCallback increaseCount;
-
-  Counter(this.count, this.increaseCount);
-
   @override
   Widget build(BuildContext context) {
+    int count = CounterProvider.of(context).count;
+    VoidCallback increaseCount = CounterProvider.of(context).increaseCount;
+
     return ActionChip(
       label: Text('$count'),
       onPressed: increaseCount,
