@@ -16,7 +16,7 @@ class _StateManagementDemoState extends State<StateManagementDemo> {
       appBar: AppBar(
         title: Text('StateManagementDemo'),
       ),
-      body: Counter(count, increaseCount),
+      body: CounterWrapper(count, increaseCount),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: increaseCount,
@@ -32,6 +32,22 @@ class _StateManagementDemoState extends State<StateManagementDemo> {
   }
 }
 
+class CounterWrapper extends StatelessWidget {
+  final int count;
+  final VoidCallback increaseCount;
+
+  const CounterWrapper(this.count, this.increaseCount);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Counter(count, increaseCount),
+      ),
+    );
+  }
+}
+
 class Counter extends StatelessWidget {
   final int count;
   final VoidCallback increaseCount;
@@ -40,11 +56,9 @@ class Counter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ActionChip(
-        label: Text('$count'),
-        onPressed: increaseCount,
-      ),
+    return ActionChip(
+      label: Text('$count'),
+      onPressed: increaseCount,
     );
   }
 }
