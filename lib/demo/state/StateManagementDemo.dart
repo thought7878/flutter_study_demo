@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class StateManagementDemo extends StatelessWidget {
-  const StateManagementDemo({Key key}) : super(key: key);
+  StateManagementDemo({Key key}) : super(key: key);
+
+  int count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -9,8 +11,17 @@ class StateManagementDemo extends StatelessWidget {
       appBar: AppBar(
         title: Text('StateManagementDemo'),
       ),
-      body: Container(
-        child: Text('StateManagement'),
+      body: Center(
+        child: Chip(
+          label: Text('$count'),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          count += 1;
+          print(count);
+        },
       ),
     );
   }
