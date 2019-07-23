@@ -1,38 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 
-class StateManagementDemo extends StatefulWidget {
-  @override
-  _StateManagementDemoState createState() {
-    return _StateManagementDemoState();
-  }
-}
-
-class _StateManagementDemoState extends State<StateManagementDemo> {
-  int count = 0;
-
+class StateManagementDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CounterProvider(
-      count: count,
-      increaseCount: _increaseCount,
+    return ScopedModel(
+      model: CounterModel(),
       child: Scaffold(
         appBar: AppBar(
           title: Text('StateManagementDemo'),
         ),
         body: CounterWrapper(),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: _increaseCount,
+        floatingActionButton: ScopedModelDescendant<CounterModel>(
+          rebuildOnChange: false,
+          builder: (context, _, model) => FloatingActionButton(
+                child: Icon(Icons.add),
+                onPressed: model.increaseCount,
+              ),
         ),
       ),
     );
   }
+}
 
-  void _increaseCount() {
-    setState(() {
-      count += 1;
-    });
-    print(count);
+class CounterModel extends Model {
+  int _count = 0;
+  int get count => _count;
+  void increaseCount() {
+    _count += 1;
+    notifyListeners();
   }
 }
 
@@ -67,12 +63,13 @@ class CounterWrapper extends StatelessWidget {
 class Counter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    int count = CounterProvider.of(context).count;
-    VoidCallback increaseCount = CounterProvider.of(context).increaseCount;
-
-    return ActionChip(
-      label: Text('$count'),
-      onPressed: increaseCount,
+    return ScopedModelDescendant<CounterModel>(
+      builder: (context, _, model) {
+        return ActionChip(
+          label: Text('${model._count}'),
+          onPressed: model.increaseCount,
+        );
+      },
     );
   }
 }
