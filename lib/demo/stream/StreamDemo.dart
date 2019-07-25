@@ -25,6 +25,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   StreamSubscription _streamSubscription;
   StreamController<String> _streamController;
   StreamSink _streamSink;
+  String _text = '...';
 
   @override
   void dispose() {
@@ -48,6 +49,9 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
   void onData(String data) {
     print(data);
+    setState(() {
+      _text = data;
+    });
   }
 
   void onData2(String data) {
@@ -79,33 +83,39 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FlatButton(
-              child: Text('add'),
-              onPressed: addDataToStream,
-            ),
-            FlatButton(
-              child: Text('pause'),
-              onPressed: () {
-                print('pause subscription');
-                _streamSubscription.pause();
-              },
-            ),
-            FlatButton(
-              child: Text('resume'),
-              onPressed: () {
-                print('resume subscription');
-                _streamSubscription.resume();
-              },
-            ),
-            FlatButton(
-              child: Text('cancel'),
-              onPressed: () {
-                print('cancel subscription');
-                _streamSubscription.cancel();
-              },
+            Text(_text),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                FlatButton(
+                  child: Text('add'),
+                  onPressed: addDataToStream,
+                ),
+                FlatButton(
+                  child: Text('pause'),
+                  onPressed: () {
+                    print('pause subscription');
+                    _streamSubscription.pause();
+                  },
+                ),
+                FlatButton(
+                  child: Text('resume'),
+                  onPressed: () {
+                    print('resume subscription');
+                    _streamSubscription.resume();
+                  },
+                ),
+                FlatButton(
+                  child: Text('cancel'),
+                  onPressed: () {
+                    print('cancel subscription');
+                    _streamSubscription.cancel();
+                  },
+                ),
+              ],
             ),
           ],
         ),
