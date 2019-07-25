@@ -23,15 +23,23 @@ class StreamDemoHome extends StatefulWidget {
 
 class _StreamDemoHomeState extends State<StreamDemoHome> {
   StreamSubscription _streamSubscription;
+  StreamController<String> _streamController;
+
+  @override
+  void dispose() {
+    super.dispose();
+    _streamController.close();
+  }
 
   @override
   void initState() {
     super.initState();
     print('create a stream');
-    Stream<String> _stream = Stream.fromFuture(fetchData());
+    // Stream<String> _stream = Stream.fromFuture(fetchData());
     print('start listening ');
-    _streamSubscription =
-        _stream.listen(onData, onError: onError, onDone: onDone);
+    _streamController = StreamController<String>();
+    _streamSubscription = _streamController.stream
+        .listen(onData, onError: onError, onDone: onDone);
     print('initialize completed');
   }
 
@@ -48,9 +56,15 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   }
 
   Future<String> fetchData() async {
-    await Future.delayed(Duration(seconds: 5));
-    return 'hello stream';
+    await Future.delayed(Duration(seconds: 3));
+    return 'hello stream controller';
     // throw 'something is wrong';
+  }
+
+  void addDataToStream() async {
+    print('add data to stream');
+    String data = await fetchData();
+    _streamController.add(data);
   }
 
   @override
@@ -60,6 +74,10 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            FlatButton(
+              child: Text('add'),
+              onPressed: addDataToStream,
+            ),
             FlatButton(
               child: Text('pause'),
               onPressed: () {
