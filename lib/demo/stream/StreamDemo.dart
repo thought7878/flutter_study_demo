@@ -24,6 +24,7 @@ class StreamDemoHome extends StatefulWidget {
 class _StreamDemoHomeState extends State<StreamDemoHome> {
   StreamSubscription _streamSubscription;
   StreamController<String> _streamController;
+  StreamSink _streamSink;
 
   @override
   void dispose() {
@@ -38,6 +39,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     // Stream<String> _stream = Stream.fromFuture(fetchData());
     print('start listening ');
     _streamController = StreamController<String>();
+    _streamSink = _streamController.sink;
     _streamSubscription = _streamController.stream
         .listen(onData, onError: onError, onDone: onDone);
     print('initialize completed');
@@ -64,7 +66,8 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   void addDataToStream() async {
     print('add data to stream');
     String data = await fetchData();
-    _streamController.add(data);
+    // _streamController.add(data);
+    _streamSink.add(data);
   }
 
   @override
