@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class StreamDemo extends StatelessWidget {
@@ -20,13 +22,16 @@ class StreamDemoHome extends StatefulWidget {
 }
 
 class _StreamDemoHomeState extends State<StreamDemoHome> {
+  StreamSubscription _streamSubscription;
+
   @override
   void initState() {
     super.initState();
     print('create a stream');
     Stream<String> _stream = Stream.fromFuture(fetchData());
     print('start listening ');
-    _stream.listen(onData, onError: onError, onDone: onDone);
+    _streamSubscription =
+        _stream.listen(onData, onError: onError, onDone: onDone);
     print('initialize completed');
   }
 
@@ -43,7 +48,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   }
 
   Future<String> fetchData() async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 5));
     return 'hello stream';
     // throw 'something is wrong';
   }
@@ -51,7 +56,34 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('body'),
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            FlatButton(
+              child: Text('pause'),
+              onPressed: () {
+                print('pause subscription');
+                _streamSubscription.pause();
+              },
+            ),
+            FlatButton(
+              child: Text('resume'),
+              onPressed: () {
+                print('resume subscription');
+                _streamSubscription.resume();
+              },
+            ),
+            FlatButton(
+              child: Text('cancel'),
+              onPressed: () {
+                print('cancel subscription');
+                _streamSubscription.cancel();
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
