@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study_demo/demo/FormDemo.dart';
 import 'package:flutter_study_demo/demo/state/StateManagementDemo.dart';
+import 'package:flutter_study_demo/demo/stream/StreamDemo.dart';
 import './demo/Hello.dart';
 import './demo/ListViewDemo.dart';
 import './demo/DrawerDemo.dart';
@@ -20,13 +21,14 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: NavigatorDemo(),
-      initialRoute: '/state-management',
+      initialRoute: '/stream',
       routes: {
         '/': (context) => Home(),
         '/about': (context) => Page(title: 'About2'),
         '/form': (context) => FormDemo(),
         '/button': (context) => ButtonDemo(),
         '/state-management': (context) => StateManagementDemo(),
+        '/stream': (context) => StreamDemo(),
       },
       theme: ThemeData(
         primarySwatch: Colors.yellow,
